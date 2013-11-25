@@ -1,0 +1,10 @@
+/.bundle
+
+/log/*.log
+/tmp
+
+database.yml
+doc/
+*.swp
+.secret
+*.swo
