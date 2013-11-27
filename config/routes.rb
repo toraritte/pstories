@@ -1,7 +1,10 @@
 Megapoc::Application.routes.draw do
 
-  resources :stories do
-    resources :lines
+  scope shallow_prefix: 'story_item' do
+    resources :stories, shallow: true do
+      resources :lines
+      resources :characters
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
