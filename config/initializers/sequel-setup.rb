@@ -14,5 +14,5 @@ if ARGV.any?{|p| p =~ /(--sandbox|-s)/}
   end
 end
 
-# Sequel::Model.plugin :active_model
-# Sequel::Model.plugin :validation_helpers
+ Sequel::Model.plugin :active_model
+ Sequel::Model.plugin :validation_helpers

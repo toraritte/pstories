@@ -7,3 +7,9 @@ table
     tr
       td = s.title
       td = link_to 'Show', story_item_story_path(s.id)
+
+h3 I dare you to make a new story
+= form_for @story do |s|
+  = s.label :title
+  = s.text_field :title
+  = s.submit 'shoot'
