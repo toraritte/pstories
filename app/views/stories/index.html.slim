@@ -1,0 +1,9 @@
+h1 Here be stories
+
+table
+  th Title
+
+  - @stories.each do |s|
+    tr
+      td = s.title
+      td = link_to 'Show', story_item_story_path(s.id)

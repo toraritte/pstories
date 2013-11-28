@@ -1,0 +1,10 @@
+h1 = @story.title
+
+table
+  - @story.lines.each do |l|
+    tr
+      td> #{l.character.name}
+      td> -
+      td = l.plot_item ? l.plot_item : l.dialogue_item
+
+= link_to 'Back', root_path

@@ -1,4 +1,5 @@
 Megapoc::Application.routes.draw do
+  root 'stories#index'
 
   scope shallow_prefix: 'story_item' do
     resources :stories, shallow: true do
