@@ -16,6 +16,14 @@ class StoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @story = Story[ params[:id] ]
+    @story.lines_dataset.destroy
+    @story.remove_all_characters
+    @story.destroy
+    redirect_to root_url
+  end
+
   private
 
     def story_params
