@@ -6,8 +6,8 @@ table
   - @stories.each do |s|
     tr
       td = s.title
-      td = link_to 'Show', story_item_story_path(s.id)
-      td = link_to 'Destroy', story_item_story_path(s.id),
+      td = link_to 'Show', story_lines_path(s.id)
+      td = link_to 'Destroy', story_path(s.id),
                    method: :delete, data: { confirm: 'Sure about this hotshot?' }
 
 h3 I dare you to make a new story

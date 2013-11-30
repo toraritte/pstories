@@ -6,5 +6,6 @@ table
       td> #{l.character.name}
       td> -
       td = l.plot_item ? l.plot_item : l.dialogue_item
+      td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
 
 = link_to 'Back', root_path
