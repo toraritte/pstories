@@ -2,10 +2,10 @@ table
   tr
     th Character
     th = story_item?(@line) ? 'Plot item' : 'Dialogue item'
-  = form_for @line, url: story_line_path, method: :patch  do |l|
+  = form_for @line, url: story_line_path(@story,@line), method: :patch  do |l|
     tr
       = fields_for @line.character do |char_fields|
         td = char_fields.text_field :name
-      td = l.text_area :dialogue_item
+      td = l.text_area story_item(@line)
       td = l.submit 'hit it'
 p = link_to 'Back', story_lines_path(@story.id)

@@ -4,6 +4,6 @@ module LinesHelper
   end
 
   def story_item(line)
-    story_item?(line) ? line.plot_item : line.dialogue_item
+    story_item?(line) ? :plot_item : :dialogue_item
   end
 end

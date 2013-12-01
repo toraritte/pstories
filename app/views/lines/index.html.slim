@@ -8,4 +8,7 @@ table
       td = l.plot_item ? l.plot_item : l.dialogue_item
       td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
 
-= link_to 'Back', root_path
+= form_for @story do |s|
+  p = s.label 'Character'
+
+div = link_to 'Back', root_path
