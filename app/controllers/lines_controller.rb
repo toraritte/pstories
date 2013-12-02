@@ -2,6 +2,7 @@ class LinesController < ApplicationController
 
   def index
     @story = Story[params[:story_id]]
+    @line = Line.new
   end
 
   def edit
@@ -19,6 +20,18 @@ class LinesController < ApplicationController
   end
 
   def create
+    line_type = params[:line_type]
+    @story = Story[params[:story_id]]
+    # TODO[8] - not checking capitalization errors
+    @character = Character.find_or_create( name: params[:name])
+    # TODO[7] - once TODO[6] returns an object this whole mess can be made safe
+    # TODO[8] - duplicate code everywhere
+    @line = Line.new(dialogue_item: params[:line_item],
+                     sequence: Line.seq,
+                     character_id: @character.id)
+    @story.add_line @line
+    @story.add_character @character
+    redirect_to story_lines_path(@story)
   end
 
 end
