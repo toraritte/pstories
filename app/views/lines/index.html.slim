@@ -4,9 +4,10 @@ table
   - @story.lines.each do |l|
     tr
       td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
+      / TODO ugly (both rendered page and code). Restructure?
       td> #{l.character ? l.character.name : ""}
       td> -
-      td = l.plot_item ? l.plot_item : l.dialogue_item
+      td = l.send(l.plot)
 
 = form_for @story do |s|
   p = s.label 'Character'
