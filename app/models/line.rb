@@ -6,7 +6,7 @@ class Line < Sequel::Model
   # TODO[5] -   new dialogue? character needed (new or existing char?)
 
   def self.seq
-    Line.max(:sequence)+1
+    Line.max(:sequence).to_f+1
   end
 
   def plot?
