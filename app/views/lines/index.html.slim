@@ -4,7 +4,7 @@ table
   - @story.lines.each do |l|
     tr
       td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
-      / TODO ugly (both rendered page and code). Restructure?
+      / TODO - ugly (both rendered page and code). Restructure?
       td> #{l.character ? l.character.name : ""}
       td> -
       td = l.send(l.plot)

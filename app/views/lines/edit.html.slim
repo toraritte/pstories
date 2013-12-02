@@ -1,11 +1,15 @@
+/ GLOBAL TODO - find a better way then <table> in all the views
 table
   tr
-    th Character
+    / TODO - needs to be DRYed (see line 9)
+    - unless @line.plot?
+      th Character
     th = @line_type
   = form_for @line, url: story_line_path(@story,@line), method: :patch  do |l|
     tr
-      = fields_for @line.character do |char_fields|
-        td = char_fields.text_field :name
+      - unless @line.plot?
+        = fields_for @line.character do |char_fields|
+          td = char_fields.text_field :name
       td = l.text_area @line.plot
       td = l.submit 'hit it'
 p = link_to 'Back', story_lines_path(@story.id)
