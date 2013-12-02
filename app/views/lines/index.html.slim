@@ -3,10 +3,10 @@ h1 = @story.title
 table
   - @story.lines.each do |l|
     tr
+      td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
       td> #{l.character ? l.character.name : ""}
       td> -
       td = l.plot_item ? l.plot_item : l.dialogue_item
-      td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
 
 = form_for @story do |s|
   p = s.label 'Character'
