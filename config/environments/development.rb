@@ -24,10 +24,9 @@ Megapoc::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config = YAML.load(ERB.new(File.read(File.join(Rails.root,"config/database.yml"))).result)[Rails.env]
-  config['logger'] = [Rails.logger, Logger.new("log/#{Rails.env}_db.log")]
-  config['logger'] << Logger.new(STDOUT) if Rails.env.development?
-  DB = Sequel::Model.db = Sequel.connect config
+
+  c = YAML.load(ERB.new(File.read(File.join(Rails.root,"config/database.yml"))).result)[Rails.env]
+  DB = Sequel::Model.db = Sequel.connect c
   Sequel::Model.db.sql_log_level = Rails.application.config.log_level || :info
 
   if ARGV.any?{|p| p =~ /(--sandbox|-s)/}
