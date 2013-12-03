@@ -78,4 +78,5 @@ Megapoc::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   DB = Sequel::Model.db = Sequel.connect(ENV['DATABASE_URL'])
+  Sequel::Model.plugin :active_model
 end
