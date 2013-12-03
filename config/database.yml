@@ -1,0 +1,23 @@
+#
+# SEQUEL SPECIFIC CONNECTION OPTIONS, MODIFY FOR ACTIVERECORD
+#
+connection: &connection
+  adapter: postgres
+  encoding: unicode
+  max_connections: 5
+  timeout: 5000
+
+development:
+  <<: *connection
+  database: m_devel
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *connection
+  database: m_test
+
+production:
+  <<: *connection
+  database: m_prod

@@ -15,9 +15,13 @@ end
 
 group :production do 
   gem 'rails_12factor'
+  gem 'pg'
 end
 
-gem 'pg'
+group :development do
+  gem 'pg'
+end
+
 gem 'slim-rails'
 gem 'pry-rails'
 gem 'sequel'
