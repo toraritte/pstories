@@ -3,4 +3,4 @@ require File.expand_path('../application', __FILE__)
 require 'sequel'
 
 # Initialize the Rails application.
-Megapoc::Application.initialize!
+Pstories::Application.initialize!

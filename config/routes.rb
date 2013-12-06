@@ -1,5 +1,5 @@
 # TODO[4] - clean up routes
-Megapoc::Application.routes.draw do
+Pstories::Application.routes.draw do
   root 'stories#index'
 
   resources :stories do

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Megapoc::Application.config.secret_key_base = '5f9e4f77710a2bb229807a88c9c49eb1a9aa9cc360af2f6bc228358c75627064ae66f3dcd8a4194e98f3d7c2bc4338d419fbe47d554dc8c402857476f9b32e0a'
+Pstories::Application.config.secret_key_base = '5f9e4f77710a2bb229807a88c9c49eb1a9aa9cc360af2f6bc228358c75627064ae66f3dcd8a4194e98f3d7c2bc4338d419fbe47d554dc8c402857476f9b32e0a'
