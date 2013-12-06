@@ -8,7 +8,7 @@ table
   / TODO[6] -(a) reorganize form so that it actually returns a line object in params
   / TODO[6] -    (see params for stories#create)
   / TODO[6] -(b) new model attributes? eg line_category = plot OR dialogue
-  = form_for @line, url: story_lines_path(@story), method: :post do |l|
+  = form_for @line, url: story_lines_url(@story), method: :post do |l|
     tr
       td = text_field_tag :name
       td = text_area_tag :line_item

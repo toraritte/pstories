@@ -5,7 +5,7 @@ table
     - unless @line.plot?
       th Character
     th = @line_type
-  = form_for @line, url: story_line_path(@story,@line), method: :patch  do |l|
+  = form_for @line, url: story_line_url(@story,@line), method: :patch  do |l|
     tr
       - unless @line.plot?
         = fields_for @line.character do |char_fields|

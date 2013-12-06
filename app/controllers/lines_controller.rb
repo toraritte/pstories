@@ -16,7 +16,7 @@ class LinesController < ApplicationController
     @line = @story.lines_dataset.first(id: params[:id])
     @line.character.update(params[:character].permit(:name))
     @line.update(params[:line].permit(:plot_item,:dialogue_item))
-    redirect_to story_lines_path(@story)
+    redirect_to story_lines_url(@story)
   end
 
   def create
@@ -31,7 +31,7 @@ class LinesController < ApplicationController
                      character_id: @character.id)
     @story.add_line @line
     @story.add_character @character
-    redirect_to story_lines_path(@story)
+    redirect_to story_lines_url(@story)
   end
 
 end
