@@ -7,21 +7,28 @@ ruby '2.0.0'
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem "factory_girl_rails"
   # 3 gems for spork
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
+  gem 'debugger'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  # might not be of any use because of sequel
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :production do 
   gem 'rails_12factor'
-  gem 'pg'
 end
 
-group :development do
-  gem 'pg'
-end
-
+gem 'pg'
 gem 'slim-rails'
 gem 'pry-rails'
 gem 'sequel'
@@ -65,5 +72,3 @@ gem 'jbuilder', '~> 1.2'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-gem 'debugger', group: [:development, :test]
