@@ -17,26 +17,26 @@ It has many flaws and missing a lot therefore without further ado:
 * extra page refresh needed in some cases for forms but not always
 
 ### DB, model, schema
-* add constraints (postgres) AND validation (sequel)
-      > LINE: sequence -> validates_unique, validates_presence
-      > CHAR: name     -> (as LINE)
-      > STORY: title   -> (as LINE)
+* add constraints (postgres) AND validation (sequel) 
+      > LINE: sequence -> validates_unique, validates_presence 
+      > CHAR: name     -> (as LINE) 
+      > STORY: title   -> (as LINE) 
 * __PLOT ITEM ISSUE__
-  1. Enforce constraints on columns depending on each other? (... and how?)
-        > plot_item     | "blabla" | null
-        > dialogue_item | NULL     | "blabla"
-        > character_id  | NULL     | 27
-  2. Alter schema? (presuming the current one isn't the best solution)
-        > PLOT                            DIALOGUE
-        > id              STORY           id
-        > story_id -----> id <----------- story_id
-        > plot_item       title           dialogue_item
-        > sequence                        sequence          CHARACTER
-        >                                character_id ---> id
-        >                                                  name
-        > The lines of a story could be queried with a join and ordered by
-        > sequence but joins are expensive and could be that this idea is
-        > even more messed up.
+  1. Enforce constraints on columns depending on each other? (... and how?) 
+        > plot_item     | "blabla" | null 
+        > dialogue_item | NULL     | "blabla" 
+        > character_id  | NULL     | 27 
+  2. Alter schema? (presuming the current one isn't the best solution) 
+        > PLOT                            DIALOGUE 
+        > id              STORY           id 
+        > story_id -----> id <----------- story_id 
+        > plot_item       title           dialogue_item 
+        > sequence                        sequence          CHARACTER 
+        >                                character_id ---> id 
+        >                                                  name 
+        > The lines of a story could be queried with a join and ordered by 
+        > sequence but joins are expensive and could be that this idea is 
+        > even more messed up. 
 
 ### Miscellaneous
 * Authentication
