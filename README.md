@@ -18,25 +18,25 @@ It has many flaws and missing a lot therefore without further ado:
 
 ### DB, model, schema
 * add constraints (postgres) AND validation (sequel)
-      LINE: sequence -> validates_unique, validates_presence
-      CHAR: name     -> (as LINE)
-      STORY: title   -> (as LINE)
+      > LINE: sequence -> validates_unique, validates_presence
+      > CHAR: name     -> (as LINE)
+      > STORY: title   -> (as LINE)
 * __PLOT ITEM ISSUE__
   1. Enforce constraints on columns depending on each other? (... and how?)
-        >plot_item     | "blabla" | NULL
-        >dialogue_item | NULL     | "blabla"
-        >character_id  | NULL     | 27
+        > plot_item     | "blabla" | null
+        > dialogue_item | NULL     | "blabla"
+        > character_id  | NULL     | 27
   2. Alter schema? (presuming the current one isn't the best solution)
-        >PLOT                            DIALOGUE
-        >id              STORY           id
-        >story_id -----> id <----------- story_id
-        >plot_item       title           dialogue_item
-        >sequence                        sequence          CHARACTER
+        > PLOT                            DIALOGUE
+        > id              STORY           id
+        > story_id -----> id <----------- story_id
+        > plot_item       title           dialogue_item
+        > sequence                        sequence          CHARACTER
         >                                character_id ---> id
         >                                                  name
-        >The lines of a story could be queried with a join and ordered by
-        >sequence but joins are expensive and could be that this idea is
-        >even more messed up.
+        > The lines of a story could be queried with a join and ordered by
+        > sequence but joins are expensive and could be that this idea is
+        > even more messed up.
 
 ### Miscellaneous
 * Authentication
