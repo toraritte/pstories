@@ -18,9 +18,11 @@ It has many flaws and missing a lot therefore without further ado:
 
 ### DB, model, schema
 * add constraints (postgres) AND validation (sequel)  
-     <pre>LINE: sequence -> validates_unique, validates_presence
-          CHAR: name     -> (as LINE)
-          STORY: title   -> (as LINE)</pre>
+     <pre>
+        LINE: sequence -> validates_unique, validates_presence
+        CHAR: name     -> (as LINE)
+        STORY: title   -> (as LINE)
+     </pre>
 * __PLOT ITEM ISSUE__
   1. Enforce constraints on columns depending on each other? (... and how?)  
         <pre>plot_item     | "blabla" | null
