@@ -39,6 +39,7 @@ It has many flaws and missing a lot therefore without further ado:
             sequence                        sequence          CHARACTER
                                            character_id ---> id
                                                              name
+
             The lines of a story could be queried with a join and ordered by
             sequence but joins are expensive and could be that this idea is
             even more messed up.
