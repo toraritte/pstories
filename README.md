@@ -1,6 +1,6 @@
 __A simple rails 4 app to create stories (especially) with dialogues__
 
-It has many flaws and missing a lot therefore without further ado...:
+It has many flaws and missing a lot therefore without further ado:
 
 ### Design
 * distinguish lines of different characters (and plot lines)
@@ -11,8 +11,7 @@ It has many flaws and missing a lot therefore without further ado...:
 * make existing characters selectable
   (tab completion, drop-down list)
 * make the most recent line shown and don't let it run out of the screen
-* make the <table>s disappear in views (TODO[1])
-
+* make the `<table>`s disappear in views (TODO[1])
 
 ### Bugs
 * extra page refresh needed in some cases for forms but not always
@@ -22,23 +21,30 @@ It has many flaws and missing a lot therefore without further ado...:
       LINE: sequence -> validates_unique, validates_presence
       CHAR: name     -> (as LINE)
       STORY: title   -> (as LINE)
-* _PLOT ITEM ISSUE_
+* __PLOT ITEM ISSUE__
   1. Enforce constraints on columns depending on each other? (... and how?)
-        plot_item     | "blabla" | NULL
-        dialogue_item | NULL     | "blabla"
-        character_id  | NULL     | 27
+        >plot_item     | "blabla" | NULL
+        >dialogue_item | NULL     | "blabla"
+        >character_id  | NULL     | 27
   2. Alter schema? (presuming the current one isn't the best solution)
-        PLOT                            DIALOGUE
-        id              STORY           id
-        story_id -----> id <----------- story_id
-        plot_item       title           dialogue_item
-        sequence                        sequence          CHARACTER
-                                        character_id ---> id
-                                                          name
-        The lines of a story could be queried with a join and ordered by
-        sequence but joins are expensive and could be that this idea is
-        even more messed up.
-  
+        >PLOT                            DIALOGUE
+        >id              STORY           id
+        >story_id -----> id <----------- story_id
+        >plot_item       title           dialogue_item
+        >sequence                        sequence          CHARACTER
+        >                                character_id ---> id
+        >                                                  name
+        >The lines of a story could be queried with a join and ordered by
+        >sequence but joins are expensive and could be that this idea is
+        >even more messed up.
+
+### Miscellaneous
+* Authentication
+  - a story can only be modified by the creator or the collaborator(s)
+  - how to enable users to give permission for someone else?
+  - how to visualize the differences in the text? (who did what)
+* Input-in-a-bundle
+  - work out the a syntax for parsing a new dialogue in plain text
 
 ### rake notes
 app/controllers/lines_controller.rb:
