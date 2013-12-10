@@ -12,6 +12,9 @@ It has many flaws and missing a lot therefore without further ado:
   (tab completion, drop-down list)
 * make the most recent line shown and don't let it run out of the screen
 * make the `<table>`s disappear in views (TODO[1])
+* use `respond_to` instead of simple `redirect_to`
+* plot vs dialogue
+  - put a separate text window for plot
 
 ### Bugs
 * extra page refresh needed in some cases for forms but not always
