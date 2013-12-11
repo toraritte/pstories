@@ -79,6 +79,7 @@ Pstories::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   # https://groups.google.com/forum/#!topic/sequel-talk/Ac_mtDhij_U
   # DB = Sequel::Model.db = Sequel.connect(ENV['DATABASE_URL'])
-  DB = Sequel::Model.db = Sequel.connect(ENV['DATABASE_URL'])
+  DB = Sequel.connect(ENV['DATABASE_URL'])
   Sequel::Model.plugin :active_model
+  Sequel::Model.plugin :validation_helpers
 end
