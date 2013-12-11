@@ -15,18 +15,16 @@ It has many flaws and missing a lot therefore without further ado:
 * use `respond_to` instead of simple `redirect_to`
 * plot vs dialogue
   - put a separate text window for plot
+* characters with the same name
+  - allow referencing chars in other stories or
+  - make sure to distinguish them if only the name matches
+  - (story.title can act as a namespace, story.title:character.name)
 
 ### Bugs
 * extra page refresh needed in some cases for forms but not always
 
 ### DB, model, schema
-* add constraints (postgres) AND validation (sequel)  
-     <pre>
-        LINE: sequence -> validates_unique, validates_presence
-        CHAR: name     -> (as LINE)
-        STORY: title   -> (as LINE)
-     </pre>
-* __PLOT ITEM ISSUE__
+* __PLOT ITEM ISSUE__ (currently going with 1 although postgres constraint missing)
   1. Enforce constraints on columns depending on each other? (... and how?)  
         <pre>
             plot_item     | "blabla" | null
@@ -38,14 +36,14 @@ It has many flaws and missing a lot therefore without further ado:
             PLOT                            DIALOGUE
             id              STORY           id
             story_id -----> id <----------- story_id
-            plot_item       title           dialogue_item
-            sequence                        sequence          CHARACTER
-                                           character_id ---> id
-                                                             name
+            line_item       title           line_item
+            sequence        total_lines     sequence          CHARACTER
+                                            character_id ---> id
+                                                              name
 
-            The lines of a story could be queried with a join and ordered by
-            sequence but joins are expensive and could be that this idea is
-            even more messed up.
+            STORY.total_lines keeps track of line number in a story and
+            used to increment (PLOT|DIALOGUE).sequence in a consistent
+            manner. ( seq method in STORY )
         </pre>
 
 ### Miscellaneous
@@ -62,10 +60,6 @@ app/controllers/lines_controller.rb:
   * [27] [TODO] [7] - once TODO[6] returns an object this whole mess can be made safe
   * [28] [TODO] [8] - duplicate code everywhere
 
-app/models/line.rb:
-  * [ 5] [TODO] [5] - validation for line creation
-  * [ 6] [TODO] [5] -   new dialogue? character needed (new or existing char?)
-
 app/models/story.rb:
   * [ 1] [TODO] [9] - DB mess, see "git log --format=%B -n 1 c3c3086"
 
@@ -80,9 +74,6 @@ app/views/lines/index.html.slim:
   * [ 9] [TODO] [6] -    (see params for stories#create)
   * [10] [TODO] [6] -(b) new model attributes? eg line_category = plot OR dialogue
   * [25] [TODO] [3] - ugly (both rendered page and code). Restructure?
-
-config/environments/production.rb:
-  * [80] [TODO] [9] - the 'Sequel::Model.db =' is probably totally unnecessary
 
 config/routes.rb:
   * [ 1] [TODO] [4] - clean up routes

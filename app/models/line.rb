@@ -2,11 +2,14 @@ class Line < Sequel::Model
   many_to_one :story
   many_to_one :character
 
-  # TODO[5] - validation for line creation
-  # TODO[5] -   new dialogue? character needed (new or existing char?)
+  def validate
+    super
+    validates_presence [:sequence, :story_id]
+    validates_unique :sequence
+  end
 
   def self.seq
-    Line.max(:sequence).to_f+1
+    self.max(:sequence).to_f+1
   end
 
   def plot?

@@ -13,4 +13,10 @@
 class Story < Sequel::Model
   one_to_many :lines
   many_to_many :characters
+
+  def validate
+    super
+    validates_presence [:title]
+    validates_unique :title
+  end
 end
