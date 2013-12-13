@@ -44,4 +44,5 @@ Pstories::Application.configure do
    Sequel::Model.plugin :active_model
    Sequel::Model.plugin :validation_helpers
    # constraint_validations, auto_validations => both useful for a new project (http://sequel.jeremyevans.net/rdoc/files/doc/validations_rdoc.html)
+   Line.dataset = Line.dataset
 end
