@@ -82,5 +82,4 @@ Pstories::Application.configure do
   DB = Sequel.connect(ENV['DATABASE_URL'])
   Sequel::Model.plugin :active_model
   Sequel::Model.plugin :validation_helpers
-  Line.dataset = Line.dataset
 end
