@@ -1,15 +1,16 @@
 / TODO[1] - find a better way then <table> in all the views
 table
   tr
-    / TODO[2] - needs to be DRYed (see line 9)
-    - unless @line.plot?
+    / TODO[2] - needs to be DRYed (render the page only according to @line.character_id,
+      TODO[2] -   without cluttering the view with code
+    - if @line.character_id
       th Character
     th = @line_type
   = form_for @line, url: story_line_url(@story,@line), method: :patch  do |l|
     tr
-      - unless @line.plot?
+      - if @line.character_id
         = fields_for @line.character do |char_fields|
           td = char_fields.text_field :name
-      td = l.text_area @line.plot
+      td = l.text_area :line_item
       td = l.submit 'hit it'
 p = link_to 'Back', story_lines_path(@story.id)

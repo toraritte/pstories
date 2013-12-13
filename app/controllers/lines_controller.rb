@@ -8,7 +8,11 @@ class LinesController < ApplicationController
   def edit
     @story = Story[params[:story_id]]
     @line = @story.lines_dataset.first(id: params[:id])
-    @line_type = @line.plot.to_s.split('_').first
+    @line_type = if @line.character_id
+                   'Dialogue'
+                 else
+                   'Plot'
+                 end
   end
 
   def update
@@ -20,17 +24,19 @@ class LinesController < ApplicationController
   end
 
   def create
-    line_type = params[:line_type]
     @story = Story[params[:story_id]]
     # TODO[8] - not checking capitalization errors
-    @character = Character.find_or_create( name: params[:name])
+    @character_id = unless params[:name].empty?
+                   Character.find_or_create( name: params[:name]).id
+                 else
+                   nil
+                 end
     # TODO[7] - once TODO[6] returns an object this whole mess can be made safe
-    # TODO[8] - duplicate code everywhere
-    @line = Line.new(dialogue_item: params[:line_item],
+    @line = Line.new(line_item: params[:line_item],
                      sequence: Line.seq,
-                     character_id: @character.id)
+                     character_id: @character_id)
     @story.add_line @line
-    @story.add_character @character
+    @story.add_character Character[@character_id] if @character_id
     redirect_to story_lines_url(@story)
   end
 

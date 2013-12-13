@@ -1,2 +1,2 @@
 #!/bin/bash
-sequel -M 0 -m db/migrate/ postgres://localhost/m_test && sequel -m db/migrate/ postgres://localhost/m_test
+sequel -M 0 -m db/migrate/ postgres://localhost/$1 && sequel -m db/migrate/ postgres://localhost/$1

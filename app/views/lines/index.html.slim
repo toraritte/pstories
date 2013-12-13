@@ -7,7 +7,6 @@ table
   / TODO[6] - where to start...
   / TODO[6] -(a) reorganize form so that it actually returns a line object in params
   / TODO[6] -    (see params for stories#create)
-  / TODO[6] -(b) new model attributes? eg line_category = plot OR dialogue
   = form_for @line, url: story_lines_url(@story), method: :post do |l|
     tr
       td = text_field_tag :name
@@ -22,7 +21,6 @@ table
   - @story.lines.each do |l|
     tr
       td = link_to 'Edit', edit_story_line_path(@story.id,l.id)
-      / TODO[3] - ugly (both rendered page and code). Restructure?
-      td> #{l.character ? l.character.name : ""}
+      td> #{l.character_id ? l.character.name : ""}
       td> -
-      td = l.send(l.plot)
+      td = l.line_item

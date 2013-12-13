@@ -11,12 +11,4 @@ class Line < Sequel::Model
   def self.seq
     self.max(:sequence).to_f+1
   end
-
-  def plot?
-    self.plot_item ? true : false
-  end
-
-  def plot
-    self.plot? ? :plot_item : :dialogue_item
-  end
 end
