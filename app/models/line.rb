@@ -4,7 +4,7 @@ class Line < Sequel::Model
 
   def validate
     super
-    validates_presence [:sequence, :story_id]
+    validates_presence [:line_item, :sequence, :story_id]
     validates_unique :sequence
   end
 

@@ -17,6 +17,10 @@ p Hint: character name not needed for plot item
 div = link_to 'Back', root_path
 h1 = @story.title
 
+/ TODO[10] - concatenating char and line_item in model?
+/ TODO[10] - some of the logic could removed
+/ TODO[10] - def name; [first, last].join(' '); end in contact.rb
+/ TODO[10] - (source: everyday rails testing with rails)
 table
   - @story.lines.each do |l|
     tr

@@ -55,38 +55,35 @@ It has many flaws and missing a lot therefore without further ado:
   - how to enable users to give permission for someone else?
   - how to visualize the differences in the text? (who did what)
 * Input-in-a-bundle
-  - work out the a syntax for parsing a new dialogue in plain text
+  - input in plain text, parse to save it to DB
+  - syntax: markdown?
 
 ### rake notes
-log/development.log
-23351:     8:   / TODO[6] -(a) reorganize form so that it actually returns a line object in params
-23352:     9:   / TODO[6] -    (see params for stories#create)
-23353:    10:   / TODO[6] -(b) new model attributes? eg line_category = plot OR dialogue
-25686:     8:   / TODO[6] -(a) reorganize form so that it actually returns a line object in params
-25687:     9:   / TODO[6] -    (see params for stories#create)
-25688:    10:   / TODO[6] -(b) new model attributes? eg line_category = plot OR dialogue
+  <pre>
+    app/controllers/lines_controller.rb
+    28:    # TODO[8] - not checking capitalization errors
+    34:    # TODO[7] - once TODO[6] returns an object this whole mess can be made safe
 
-app/controllers/lines_controller.rb
-28:    # TODO[8] - not checking capitalization errors
-34:    # TODO[7] - once TODO[6] returns an object this whole mess can be made safe
+    app/views/lines/edit.html.slim
+    1:/ TODO[1] - find a better way then <table> in all the views
+    4:    / TODO[2] - needs to be DRYed (render the page only according to @line.character_id,
+    5:      TODO[2] -   without cluttering the view with code
 
-app/views/lines/edit.html.slim
-1:/ TODO[1] - find a better way then <table> in all the views
-4:    / TODO[2] - needs to be DRYed (render the page only according to @line.character_id,
-5:      TODO[2] -   without cluttering the view with code
+    app/views/lines/index.html.slim
+    1:/ TODO[2&3] - 3rd location where layout depends on line type (plot, dialogue)
+    2:/ TODO[2&3] - _plot partial?
+    7:  / TODO[6] - where to start...
+    8:  / TODO[6] -(a) reorganize form so that it actually returns a line object in params
+    9:  / TODO[6] -    (see params for stories#create)
 
-app/views/lines/index.html.slim
-1:/ TODO[2&3] - 3rd location where layout depends on line type (plot, dialogue)
-2:/ TODO[2&3] - _plot partial?
-7:  / TODO[6] - where to start...
-8:  / TODO[6] -(a) reorganize form so that it actually returns a line object in params
-9:  / TODO[6] -    (see params for stories#create)
+    app/models/story.rb
+    1:# TODO[9] - DB mess, see "git log --format=%B -n 1 c3c3086"
+    2:# TODO[9] - couple examples: STORY[:id].add_character -> merrily saves duplicates
+    3:# TODO[9] - UPDATE: this is intentional. use story.title (or .id) as a namespace
 
-app/models/story.rb
-1:# TODO[9] - DB mess, see "git log --format=%B -n 1 c3c3086"
+    config/routes.rb
+    1:# TODO[4] - clean up routes
 
-config/routes.rb
-1:# TODO[4] - clean up routes
-
-spec/model/line_spec.rb
-22:  # TODO - write an "errors_on" helper (see story_spec.rb)
+    spec/model/line_spec.rb
+    18:  # TODO - write an "errors_on" helper (see story_spec.rb)
+  </pre>
